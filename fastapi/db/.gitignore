@@ -1,0 +1,8 @@
+# python
+**/__pycache__
+
+# git
+!.gitkeep
+
+# postgres
+**/postgres_data

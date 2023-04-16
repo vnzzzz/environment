@@ -1,10 +1,10 @@
-# env-python
+# python
 
 ## 初期設定
 
     ```bash
     docker-compose up -d --build
-    docker-compose exec env-python sh start.sh 
+    docker-compose exec env-python sh start.sh
     ```
 
 ## 次回以降

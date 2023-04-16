@@ -1,4 +1,4 @@
-# how to use
+# docker swarm
 
 ## introduction
 

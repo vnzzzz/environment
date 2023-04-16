@@ -1,8 +1,8 @@
-# env-ubuntu
+# linux
 
 ## 目的
 
-- テスト用の VM を virtualbox + vagrant で作成する
+- テスト用の Linux VM (ubuntu) を virtualbox + vagrant で作成する
 
 ## 環境
 

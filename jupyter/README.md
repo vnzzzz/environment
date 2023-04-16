@@ -1,4 +1,4 @@
-# env-jupyter
+# jupyter
 
 ## jupyter notebook を vscode で実行する手順のメモ
 

@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  env-python:
+    container_name: env-python
+    hostname: env-python
+    restart: always
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/src

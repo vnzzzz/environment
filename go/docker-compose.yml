@@ -1,0 +1,26 @@
+version: "3"
+services:
+  app:
+    hostname: test-go
+    container_name: test-go
+    tty: true
+    stdin_open: true
+    restart: always
+    build:
+      context: .
+    command: /bin/bash
+    volumes:
+      - ./work:/go/src/work
+    networks:
+      - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.test-go.entrypoints=web
+      - traefik.http.routers.test-go.rule=Host(`test-go.localhost`)
+      - traefik.http.services.test-go.loadbalancer.server.port=8080
+      - traefik.http.routers.test-go.service=test-go
+
+networks:
+  web:
+    external:
+      name: docker-mgr_web

@@ -1,0 +1,35 @@
+{
+	"name": "env-python",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"service": "env-python",
+	"workspaceFolder": "/src",
+	"settings": {
+		// linter
+		"python.linting.pylintEnabled": false,
+		"python.linting.flake8Enabled": true,
+		"python.linting.flake8Path": "src/.venv/bin/flake8",
+		"python.linting.flake8Args": [
+			"--ignore=E501",
+			"--ignore=W503"
+		],
+		"python.linting.lintOnSave": true,
+		// formatter
+		"python.formatting.provider": "black",
+		"python.formatting.blackPath": "src/.venv/bin/black",
+		"python.formatting.blackArgs": [
+			"--line-length",
+			"119"
+		],
+		"editor.formatOnSave": true,
+		// type check
+		"python.analysis.typeCheckingMode": "strict"
+	},
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"njpwerner.autodocstring"
+	],
+	"shutdownAction": "stopCompose"
+}

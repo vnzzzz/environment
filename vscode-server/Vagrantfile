@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  vm_name = "vscode-server"
+
+  config.vm.define vm_name do |s|
+
+    # hostname
+    s.vm.hostname = vm_name
+    # os
+    s.vm.box = "ubuntu/focal64"
+    # network
+    private_ip = "192.168.10.40"
+    s.vm.network "private_network", ip: private_ip
+
+    # spec
+    s.vm.provider "virtualbox" do |v|
+      v.gui = false        
+      v.cpus = 1
+      v.memory = 1024
+    end
+
+    # Common
+    s.vm.provision :shell, :path => "./shell/setup.sh"
+  end
+end

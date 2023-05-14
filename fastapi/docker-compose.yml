@@ -21,9 +21,9 @@ services:
       - traefik.http.routers.env-fastapi.rule=PathPrefix(`/env-fastapi`)
       - traefik.http.routers.env-fastapi.middlewares=strip-prefix-env-fastapi
       - traefik.http.middlewares.strip-prefix-env-fastapi.stripprefixregex.regex=/env-fastapi
-
     depends_on:
       - db
+
   db:
     container_name: postgres
     hostname: postgres

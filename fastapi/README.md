@@ -1,18 +1,28 @@
-# env-fastapi
+# 　 fastapi
 
-- fastapiの開発環境をつくる
+- fastapi の開発環境をつくる
 
 ## 起動時
 
-1. コマンドパレットで`Remote-Containers: Open Folder in Container...`を選択し、`api`をdev containerで開く
+### dev/prod
 
-   - 設定で、DBも自動で起動される
+dev 環境の起動時は`docker compose -f docker-compose.dev.yml up -d --build`を実行する。
+dev 環境のビルド時には`Dockerfile.dev`が利用される。
 
-1. remote containerを閉じると、コンテナは自動でStopされる
+### devcontaier
+
+1. コマンドパレットで`Remote-Containers: Open Folder in Container...`を選択し、`api`を dev container で開く
+
+   - 設定で、DB も自動で起動される
+
+1. remote container を閉じると、コンテナは自動で Stop される
 
 ## 構築メモ
 
-- pythonコードを書くときは、devcontainerの中で実施する
-    lint, format, 型なども見てくれる
+- python コードを書くときは、devcontainer の中で実施する（lint, format, 型なども見てくれるのでメリットが大きい）
+- dev 環境は hotreload が有効なため、devcontainer の中でスクリプト修正・保存すると、fastapi の docs などを開いているブラウザをリロードすれば反映される
+- 本番相当の環境で最新版を反映させるときは devcontainer の中で`rebuild container`する（そもそも devcontainer は使わない想定）
 
-- 最新版を反映させるときはdevcontainerの中で`rebuild container`する
+## TODO
+
+- コンテナ・パスの dev/prod 分離の設計を考える

@@ -19,4 +19,4 @@ RUN poetry install
 # app
 COPY ./app/app /app/app
 
-CMD [".venv/bin/gunicorn", "-w", "1", "-k", "uvicorn.workers.UvicornWorker", "--capture-output", "--log-level", "warning", "--access-logfile", "-", "--bind", ":80", "--reload", "app.main:app"]
+CMD ["poetry", "run", "uvicorn", "--host", "0.0.0.0", "--port", "80", "--reload", "--log-level", "warning", "app.main:app"]

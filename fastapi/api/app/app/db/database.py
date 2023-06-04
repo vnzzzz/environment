@@ -1,6 +1,6 @@
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, Session, declarative_base
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 import os
 
 # ---- sqlite ----
@@ -8,16 +8,36 @@ import os
 # engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 
 # ---- postgres ----
-POSTGRES_USER = os.environ.get("POSTGRES_USER", "fastapi")
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD", "fastapi")
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "db")
-POSTGRES_PORT = os.environ.get("POSTGRES_PORT", "5432")
-POSTGRES_DB = os.environ.get("POSTGRES_DB", "fastapi")
-SQLALCHEMY_DATABASE_URL = "postgresql://{}:{}@{}:{}/{}".format(
-    POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB
+# DB_USER = os.environ.get("DB_USER", "fastapi")
+# DB_PASSWORD = os.environ.get("DB_PASSWORD", "fastapi")
+# DB_HOST = os.environ.get("DB_HOST", "db")
+# DB_PORT = os.environ.get("DB_PORT", "5432")
+# DB_DB = os.environ.get("DB_DATABASE", "fastapi")
+# SQLALCHEMY_DATABASE_URL = "postgresql://{}:{}@{}:{}/{}".format(
+#     DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DATABASE
+# )
+# engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+# ---- mysql ----
+DB_USER = os.environ.get("DB_USER", "fastapi")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "fastapi")
+DB_HOST = os.environ.get("DB_HOST", "db")
+DB_PORT = os.environ.get("DB_PORT", "3306")
+DB_DATABASE = os.environ.get("DB_DATABASE", "fastapi")
+SQLALCHEMY_DATABASE_URL = "mysql://{}:{}@{}:{}/{}?charset=utf8".format(
+    DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_DATABASE
 )
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
+
+
+def get_db():
+    db: Session = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

@@ -4,5 +4,6 @@
 # git
 !.gitkeep
 
-# postgres
+# db
 **/postgres_data
+**/mysql_data

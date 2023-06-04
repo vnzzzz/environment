@@ -19,8 +19,10 @@ dev 環境のビルド時には`Dockerfile.dev`が利用される。
 
 ## 構築メモ
 
-- python コードを書くときは、devcontainer の中で実施する（lint, format, 型なども見てくれるのでメリットが大きい）
-- dev 環境は hotreload が有効なため、devcontainer の中でスクリプト修正・保存すると、fastapi の docs などを開いているブラウザをリロードすれば反映される
+- python コードを書くときは、dev 環境で devcontainer の中で実施する
+  - lint, format, 型なども見てくれるのでメリットが大きい
+  - dev 環境は hot reload が有効
+    - devcontainer の中でスクリプト修正・保存すると、fastapi の docs などを開いているブラウザをリロードすれば反映される
 - 本番相当の環境で最新版を反映させるときは devcontainer の中で`rebuild container`する（そもそも devcontainer は使わない想定）
 
 ## TODO

@@ -16,11 +16,11 @@ services:
     networks:
       - web
     environment:
-      - POSTGRES_USER=fastapi
-      - POSTGRES_PASSWORD="fastapi
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=fastapi
+      - DB_USER=fastapi
+      - DB_PASSWORD=fastapi
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=fastapi
     labels:
       - traefik.enable=true
       - traefik.http.routers.env-fastapi.entrypoints=web
@@ -39,13 +39,14 @@ services:
       context: ./db
       dockerfile: Dockerfile
     volumes:
-      - ./db/postgres_data:/var/lib/postgresql/data/
+      - ./db/mysql_data:/var/lib/mysql
     networks:
       - web
     environment:
-      - POSTGRES_USER=fastapi
-      - POSTGRES_PASSWORD=fastapi
-      - POSTGRES_DB=fastapi
+      - MYSQL_USER=fastapi
+      - MYSQL_PASSWORD=fastapi
+      - MYSQL_DATABASE=fastapi
+    command: --default-authentication-plugin=mysql_native_password
 
 networks:
   web:

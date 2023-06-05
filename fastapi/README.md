@@ -25,6 +25,10 @@ dev 環境のビルド時には`Dockerfile.dev`が利用される。
     - devcontainer の中でスクリプト修正・保存すると、fastapi の docs などを開いているブラウザをリロードすれば反映される
 - 本番相当の環境で最新版を反映させるときは devcontainer の中で`rebuild container`する（そもそも devcontainer は使わない想定）
 
+## Test
+
+devcontainer の中で`poetry run pytest`
+
 ## TODO
 
 - コンテナ・パスの dev/prod 分離の設計を考える

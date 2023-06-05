@@ -28,3 +28,7 @@ dev 環境のビルド時には`Dockerfile.dev`が利用される。
 ## TODO
 
 - コンテナ・パスの dev/prod 分離の設計を考える
+
+## References
+
+- [FastAPI でテスト用のクリーンな DB を作成して pytest で API の Unittest を行う](https://qiita.com/bee2/items/ff9c86d8d345dbcab497)

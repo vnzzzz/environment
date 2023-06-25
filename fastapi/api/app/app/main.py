@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # モジュールのインポート
 from .routers import users
 from .routers import items
+from .routers import times
 
 # fastapiインスタンスを生成
 app = FastAPI(title="Env fastapi", root_path="/env-fastapi")
@@ -19,6 +20,7 @@ app.add_middleware(
 
 app.include_router(users.router)
 app.include_router(items.router)
+app.include_router(times.router)
 
 
 @app.get("/")

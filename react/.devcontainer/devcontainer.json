@@ -1,0 +1,35 @@
+{
+  "name": "React Development",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "react-development",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bierner.color-info",
+        "christian-kohler.npm-intellisense",
+        "davidanson.vscode-markdownlint",
+        "Gruntfuggly.todo-tree"
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.tabSize": 2,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "editor.formatOnSave": true
+      }
+    }
+  }
+}

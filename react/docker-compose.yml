@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  react-development:
+    build: .
+    container_name: react-development
+    hostname: react-development
+    tty: true
+    volumes:
+      - ./app:/app
+    ports:
+      - 3000:3000

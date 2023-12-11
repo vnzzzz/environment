@@ -1,0 +1,33 @@
+- hosts: splunk_sh
+  gather_facts: no
+  tasks:
+    - name: create directiry for file
+      file:
+        path: /tmp/data
+        state: directory
+
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: upload file
+      command: docker cp ../data/ so1:/tmp/
+
+- hosts: splunk_sh
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: list all data
+      find:
+        paths: "/tmp/data"
+        file_type: file
+      register: files
+
+    - name: add oneshot to index
+      command: ./bin/splunk add oneshot {{item.path}} -index {{index}} -auth {{admin}}:{{password}}
+      loop: "{{files.files}}"
+
+    - name: clear data firectory
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{files.files}}"

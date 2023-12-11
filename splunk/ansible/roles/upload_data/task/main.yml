@@ -1,0 +1,4 @@
+- name: Upload Data
+  shell: |
+    ./bin/splunk remove index {{index}} -auth {{admin}}:{{password}}
+  register: result

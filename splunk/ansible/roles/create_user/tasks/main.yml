@@ -1,0 +1,2 @@
+- name: Create User
+  command: ./bin/splunk add user {{user}} -password {{user_password}} -role user -auth {{admin}}:{{password}}

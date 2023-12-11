@@ -1,0 +1,6 @@
+- hosts: splunk_sh
+  become: yes
+  gather_facts: no
+  roles:
+    - create_index
+    - create_user

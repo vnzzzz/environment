@@ -1,0 +1,2 @@
+- name: Delete Splunk Index
+  command: ./bin/splunk remove index {{index}} -auth {{admin}}:{{password}}

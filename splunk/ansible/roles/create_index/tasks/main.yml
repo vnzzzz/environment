@@ -1,0 +1,2 @@
+- name: Create Splunk Index
+  command: ./bin/splunk add index {{index}} -auth {{admin}}:{{password}}

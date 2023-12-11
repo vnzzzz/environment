@@ -1,0 +1,5 @@
+[splunk_sh]
+so1 ansible_connection=docker
+
+[splunk_uf]
+uf1 ansible_connection=docker

@@ -2,6 +2,8 @@
 /data
 /tmp
 .DS_Store
+/tutorialdata
+/tutorialdata_zip
 
 # container data
 /so1

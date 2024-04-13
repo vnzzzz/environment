@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  dind:
+    build:
+      context: .
+      args:
+        SSH_USERNAME: ${SSH_USERNAME}
+        SSH_PASSWORD: ${SSH_PASSWORD}
+    container_name: dind
+    hostname: dind
+    privileged: true
+    ports:
+      - "2222:22"

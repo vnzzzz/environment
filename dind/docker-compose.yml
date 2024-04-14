@@ -5,10 +5,11 @@ services:
     build:
       context: .
       args:
-        SSH_USERNAME: ${SSH_USERNAME}
-        SSH_PASSWORD: ${SSH_PASSWORD}
+        USERNAME: ${USERNAME}
+        PASSWORD: ${PASSWORD}
     container_name: dind
     hostname: dind
     privileged: true
     ports:
       - "2222:22"
+      - "6000-6010:6000-6010"

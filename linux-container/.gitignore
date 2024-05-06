@@ -1,0 +1,9 @@
+# git
+!.gitkeep
+
+# credential
+.env
+
+# data
+data
+work

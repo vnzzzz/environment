@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  linux-contanier:
+    build:
+      context: .
+      args:
+        USERNAME: ${USERNAME}
+        PASSWORD: ${PASSWORD}
+    container_name: linux-contanier
+    hostname: linux-contanier
+    privileged: true
+    ports:
+      - 2222:22
+    volumes:
+      - ./work:/work
